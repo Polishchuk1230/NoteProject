@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Заметка</title>
+</head>
+<body>
+
+<div>
+    <p>Идентификатор заметки в базе данных: <span style="font-weight: bold" th:text="${note.id}"></span></p>
+    <p>Заголовок заметки: <span style="font-weight: bold" th:text="${note.title}"></span> </p>
+    <p>Содержимое заметки: <span style="font-weight: bold" th:text="${note.description}"></span> </p>
+</div>
+
+</body>
+</html>
