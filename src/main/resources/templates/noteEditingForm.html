@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Note editing page</title>
+</head>
+<body>
+
+<h3>Note editing</h3>
+<form action="/notes/save" method="post">
+  <p style="display: none">Идентификатор: <input name="id" type="number" th:value="${note.id}" /></p>
+  <p>Заголовок: <input name="title" type="text" th:value="${note.title}" /></p>
+  <p>Содержимое заметки: <br /><textarea th:text="${note.description}" name="description" type="text" rows="5" cols="45"></textarea></p>
+  <input type="submit" value="Edit" />
+</form>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Заметка</title>
+</head>
+<body>
+<h3>Notes view</h3>
+<div style="display: inline-block; background: #f0ffff; margin: 10px; width: max-content; border: 2px black solid" th:each="note : ${notes}">
+    <p style="display: inline-block; position: relative; bottom: 16px; margin: 0px; min-width: 50px">id: <span style="font-weight: bold" th:text="${note.id}"></span></p>
+    <a th:href="@{/notes/open(id=${note.id})}"><p style="display: inline-block; min-width: 400px; min-height: 50px">Title: <span style="font-weight: bold" th:text="${note.title}"></span></p></a>
+    <div style="width: available; background: #ffffe0; text-align: right">
+        <a th:href="@{/notes/editform(id=${note.id})}">Edit</a>
+        <a  th:href="@{/notes/deleteform(id=${note.id})}">Delete</a>
+    </div>
+</div>
+
+</body>
+</html>
