@@ -24,8 +24,7 @@ public class NoteController {
 
     //---------------------------------------------------------------------------------Создание и редактирование заметок
     @GetMapping("/createform")
-    public String getNoteForm(Model model) {
-        model.addAttribute("note", new Note());
+    public String getNoteForm() {
         return "noteCreationForm";
     }
 
@@ -59,6 +58,5 @@ public class NoteController {
         model.addAttribute("note", this.noteRepository.findById(id).get());
         return "noteView";
     }
-
 
 }

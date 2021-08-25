@@ -2,14 +2,20 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Заметка</title>
+    <title>Note editing page</title>
 </head>
-<body>
+<body style="margin: 0px;">
 
-<div>
-    <p>Идентификатор заметки в базе данных: <span style="font-weight: bold" th:text="${note.id}"></span></p>
-    <p>Заголовок заметки: <span style="font-weight: bold" th:text="${note.title}"></span> </p>
-    <p>Содержимое заметки: <span style="font-weight: bold" th:text="${note.description}"></span> </p>
+<div style="padding: 0 40px 20px 40px; width: 340px; background: #f0ffff;">
+    <p style="position: absolute; left: 0;  top: -14px; font-size: 12px;">Note id: <span th:text="${note.id}"></span></p>
+    <h3 style="display: inline-block; width: 100%; text-align: center; padding: 10px 0px;">Note view</h3>
+    <div>
+        <p>Title: <span th:text="${note.title}"></span></p>
+        <p>Description: <span th:text="${note.description}"></span></p>
+    </div>
+    <a style="display: inline-block; padding: 10px; border-style: solid; border-color: deepskyblue; background: #87cef2;" href="/notes">Back to all</a>
+    <a style="display: inline-block; padding: 10px; border-style: solid; border-color: deepskyblue; background: #87cef2;" th:href="@{/notes/editform(id=${note.id})}">Edit</a>
+    <a style="display: inline-block; padding: 10px; border-style: solid; border-color: deepskyblue; background: #87cef2;" th:href="@{/notes/deleteform(id=${note.id})}">Delete</a>
 </div>
 
 </body>

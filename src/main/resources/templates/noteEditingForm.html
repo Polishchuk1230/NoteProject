@@ -4,15 +4,17 @@
   <meta charset="UTF-8">
   <title>Note editing page</title>
 </head>
-<body>
+<body style="margin: 0px;">
 
-<h3>Note editing</h3>
+<div style="padding: 0 40px; width: 340px; background: #f0ffff; padding-bottom: 20px;">
+<h3 style="display: inline-block; width: 100%; text-align: center; padding: 10px 0px;">Note editing</h3>
 <form action="/notes/save" method="post">
-  <p style="display: none">Идентификатор: <input name="id" type="number" th:value="${note.id}" /></p>
-  <p>Заголовок: <input name="title" type="text" th:value="${note.title}" /></p>
-  <p>Содержимое заметки: <br /><textarea th:text="${note.description}" name="description" type="text" rows="5" cols="45"></textarea></p>
-  <input type="submit" value="Edit" />
+  <input name="id" type="hidden" th:value="${note.id}" />
+  <p>Title: <input name="title" type="text" th:value="${note.title}" style="width: 290px;" /></p>
+  <p>Description:<br /><textarea th:text="${note.description}" name="description" type="text" rows="5" cols="45"></textarea></p>
+  <p style="text-align: right;"><input type="submit" value="Edit" /></p>
 </form>
+</div>
 
 </body>
 </html>

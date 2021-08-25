@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Note editing page</title>
+</head>
+<body style="margin: 0px;">
+
+<div style="padding: 0 40px; width: 340px; background: #f0ffff; padding-bottom: 20px;">
+    <h3 style="display: inline-block; width: 100%; text-align: center; padding: 10px 0px;">Note creation</h3>
+    <form action="/notes/save" method="post">
+        <p>Title: <input name="title" type="text" style="width: 290px;" /></p>
+        <p>Description:<br /><textarea name="description" type="text" rows="5" cols="45"></textarea></p>
+        <p style="text-align: right;"><input type="submit" value="Create" /></p>
+    </form>
+</div>
+
+</body>
+</html>
