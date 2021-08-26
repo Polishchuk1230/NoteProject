@@ -15,16 +15,16 @@ public class NoteController {
         this.noteRepository = noteRepository;
     }
 
-    //--------------------------------------------------------------Шаблон отображения всех заметок (стартовая страница)
+    //--------------------------------------------------------------------------------------------Получение всех заметок
     @GetMapping("")
     public String getAll(Model model) {
         model.addAttribute("notes", this.noteRepository.findAll());
         return "notesView";
     }
 
-    //---------------------------------------------------------------------------------Создание и редактирование заметок
+    //---------------------------------------------------------------------------------Создание и редактирование заметки
     @GetMapping("/createform")
-    public String getNoteForm() {
+    public String getForm() {
         return "noteCreationForm";
     }
 
@@ -40,6 +40,7 @@ public class NoteController {
         return "redirect:/notes";
     }
 
+    //--------------------------------------------------------------------------------------------------Удаление заметки
     @GetMapping("/deleteform")
     public String getDeleteForm(@RequestParam("id") int id, Model model) {
         model.addAttribute("note", this.noteRepository.findById(id).get());
@@ -48,7 +49,7 @@ public class NoteController {
 
     @PostMapping("/delete")
     public String postDeleteNote(@RequestParam("id") int id) {
-        this.noteRepository.delete(this.noteRepository.findById(id).get());
+        this.noteRepository.deleteById(id);
         return "redirect:/notes";
     }
 

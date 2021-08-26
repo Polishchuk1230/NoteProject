@@ -2,18 +2,23 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Заметка</title>
+    <title>Notes</title>
 </head>
 <body>
 <h3>Notes view</h3>
-<div style="display: inline-block; background: #f0ffff; margin: 0px; padding: 0px; line-height: 0px; width: max-content; border: 2px black solid" th:each="note : ${notes}">
-    <p style="display: inline-block; margin: 0px; padding: 0px; line-height: 0px; min-width: 50px; background: indigo">id: <span style="font-weight: bold" th:text="${note.id}"></span></p>
-    <a th:href="@{/notes/open(id=${note.id})}"><p style="display: inline-block; min-width: 400px; min-height: 50px">Title: <span style="font-weight: bold" th:text="${note.title}"></span></p></a>
-    <div style="width: available; background: #ffffe0; text-align: right">
+<div  style="display: inline-block; border: 2px black solid; background: #f0ffff; margin-top: 4px; padding: 0px; line-height: 0px; width: max-content;" th:each="note : ${notes}">
+    <p style="font-size: smaller; display: inline-block; line-height: 0px; width: 50px; background: indigo">id: <span style="font-weight: bold" th:text="${note.id}"></span></p>
+    <a th:href="@{/notes/open(id=${note.id})}"><p style="display: inline-block; width: 400px; min-height: 50px">Title: <span style="font-weight: bold" th:text="${note.title}"></span></p></a>
+    <div style="background: #ffffe0; margin-bottom: 8px; text-align: right">
         <a th:href="@{/notes/editform(id=${note.id})}">Edit</a>
         <a th:href="@{/notes/deleteform(id=${note.id})}">Delete</a>
     </div>
 </div>
+<a href="/notes/createform">
+    <div style="width: max-content; border: 2px black solid; background: #f0ffff; margin-top: 50px; padding: 22px 44px;">
+        add new one
+    </div>
+</a>
 
 </body>
 </html>
