@@ -60,4 +60,17 @@ public class NoteController {
         return "noteView";
     }
 
+    //-------------------------------------------------------------поиска заметок по подстроке в описании либо заголовке
+    @GetMapping("/firstway")
+    public String firstGetBySubstr(@RequestParam("substr") String str, Model model) {
+        model.addAttribute("notes", this.noteRepository.findByTitleContainingOrDescriptionContaining(str, str));
+        return "notesView";
+    }
+
+    @GetMapping("/secondway")
+    public String secondGetBySubstr(@RequestParam("substr") String str, Model model) {
+        model.addAttribute("notes", this.noteRepository.findBySubstring(str));
+        return "notesView";
+    }
+
 }
