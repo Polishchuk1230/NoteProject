@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 
 import org.springframework.data.annotation.PersistenceConstructor;
 import javax.persistence.*;
+import java.util.Date;
 
 @NoArgsConstructor
 @Data
@@ -18,10 +19,16 @@ public class Note {
     private String title;
     @Column(name="note")
     private String description;
+    private Date lastEditTime;
+
 
     @PersistenceConstructor
-    public Note(int id, String title, String description) {
-        this.id = id; this.title = title; this.description = description;
+    public Note(int id, String title, String description, Date lastEditTime) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.lastEditTime = lastEditTime;
     }
+
 
 }
