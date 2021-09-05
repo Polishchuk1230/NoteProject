@@ -1,5 +1,7 @@
-package com.example.homeworkno38;
+package com.example.homeworkno38.controller;
 
+import com.example.homeworkno38.repository.NoteRepository;
+import com.example.homeworkno38.model.Note;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,14 +19,14 @@ public class NoteController {
 
     //--------------------------------------------------------------------------------------------Получение всех заметок
     @GetMapping("")
-    public String getAll(Model model) {
+    public String getAll(Model model, java.security.Principal principal) {
         model.addAttribute("notes", this.noteRepository.findAll());
         return "notesView";
     }
 
     //---------------------------------------------------------------------------------Создание и редактирование заметки
     @GetMapping("/createform")
-    public String getForm() {
+    public String getCreateForm() {
         return "noteCreationForm";
     }
 
@@ -35,7 +37,7 @@ public class NoteController {
     }
 
     @PostMapping("/save")
-    public String postCreateNote(@ModelAttribute Note note) {
+    public String postSaveNote(@ModelAttribute Note note) {
         note.setLastEditTime(new java.util.Date());//Обновление последней даты редактирования заметки
         this.noteRepository.save(note);
         return "redirect:/notes";
@@ -59,19 +61,6 @@ public class NoteController {
     public String getNote(@RequestParam("id") int id, Model model) {
         model.addAttribute("note", this.noteRepository.findById(id).get());
         return "noteView";
-    }
-
-    //-------------------------------------------------------------поиска заметок по подстроке в описании либо заголовке
-    @GetMapping("/firstway")
-    public String firstGetBySubstr(@RequestParam("substr") String str, Model model) {
-        model.addAttribute("notes", this.noteRepository.findByTitleContainingOrDescriptionContaining(str, str));
-        return "notesView";
-    }
-
-    @GetMapping("/secondway")
-    public String secondGetBySubstr(@RequestParam("substr") String str, Model model) {
-        model.addAttribute("notes", this.noteRepository.findBySubstring(str));
-        return "notesView";
     }
 
 }

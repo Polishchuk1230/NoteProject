@@ -1,5 +1,6 @@
-package com.example.homeworkno38;
+package com.example.homeworkno38.repository;
 
+import com.example.homeworkno38.model.Note;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -12,4 +13,5 @@ public interface NoteRepository extends CrudRepository<Note, Integer> {
 
     @Query("SELECT n FROM Note n WHERE n.title LIKE %:str% OR n.description LIKE %:str%")
     Iterable<Note> findBySubstring(@Param("str") String str);
+
 }
