@@ -1,41 +1,31 @@
 package com.example.homeworkno38.model;
 
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor
 @Data
 
 @Entity
-@Table(name = "users")
-public class User {
+@Table(name = "roles")
+public class Role {
     //------------------------------------------------------------------------------------------------------------Fields
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(unique = true)
-    private String username;
+    private String name;
 
-    private String password;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Role role;
-
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
-    @OrderBy("lastEditTime DESC")
-    private List<Note> notes = new LinkedList<>();
+    @OneToMany(mappedBy = "role", fetch = FetchType.EAGER)
+    private List<User> users = new ArrayList<>();
 
     //-------------------------------------------------------------------------------------------------------Constructor
-    public User(int id, String username, String password, Role role) {
+    public Role(int id, String name) {
         this.id = id;
-        this.username = username;
-        this.password = password;
-        this.role = role;
+        this.name = name;
     }
-
-
 }

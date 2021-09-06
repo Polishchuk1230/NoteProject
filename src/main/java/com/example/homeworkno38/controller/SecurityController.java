@@ -1,6 +1,7 @@
 package com.example.homeworkno38.controller;
 
 import com.example.homeworkno38.model.User;
+import com.example.homeworkno38.repository.RoleRepository;
 import com.example.homeworkno38.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class SecurityController {
     private UserRepository userRepository;
+    private RoleRepository roleRepository;
     private PasswordEncoder passwordEncoder;
 
     @GetMapping("/login")
@@ -39,7 +41,7 @@ public class SecurityController {
                 0,
                 username,
                 passwordEncoder.encode(password),
-                "USER"
+                roleRepository.findByName("USER")
         );
         this.userRepository.save(user);
 
