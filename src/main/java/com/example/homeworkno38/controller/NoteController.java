@@ -43,7 +43,7 @@ public class NoteController {
     @PostMapping("/save")
     public String postSaveNote(@ModelAttribute Note note, Principal principal) {
         note.setLastEditTime(new java.util.Date());//Обновление последней даты редактирования заметки
-        note.setUser(userRepository.findByUsername(principal.getName()));//Присвоение пользователя
+        note.setUser(userRepository.findByUsername(principal.getName()));//Назначение пользователя
         this.noteRepository.save(note);
         return "redirect:/notes";
     }
