@@ -11,28 +11,15 @@ import java.security.Principal;
 
 @SpringBootTest
 class HomeWorkNo38ApplicationTests {
-    private MailService mailService;
+    private UserRepository userRepository;
 
     @Autowired
-    public HomeWorkNo38ApplicationTests(MailService mailService) {
-        this.mailService = mailService;
+    public HomeWorkNo38ApplicationTests(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
     @Test
     void contextLoads() throws InterruptedException {
-        SimpleMailMessage mail = new SimpleMailMessage();
-
-        mail.setFrom("mycode@mail.ua");
-        mail.setTo("someones@mail.ua");
-        mail.setSubject("Subject of the mail");
-        mail.setText("Text of th mail111");
-
-
-        System.out.println("письма отправляются...");
-        for (int i=0; i<1; i++) {
-            mailService.sandMail(mail);
-        }
-        Thread.sleep(30000);
-        System.out.println("письма отправлены!!!");
+        userRepository.delete(userRepository.findById(1).get());
     }
 }
